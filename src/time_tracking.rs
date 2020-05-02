@@ -28,11 +28,12 @@ Days Off : {} days
 
 fn calculate_need_to_work(data:TimeTrackingData) -> String {
     let mut report:String = format!("");
-
     let total_hours = data.config.base as f32 - data.month_data.worked_hours as f32;
     report = format!("{} {} {}{}\n",report,"Need to Work  : ",total_hours," hours total <<< ");
 
-    let avg_working_hours_yet = (data.config.base as f32 - data.month_data.worked_hours as f32) / (workable_days() - data.month_data.holidays_count) as f32;
+    let hours_to_work = data.config.base as f32 - data.month_data.worked_hours as f32;
+    let available_days = (workable_days() - data.month_data.holidays_count) as f32;
+    let avg_working_hours_yet = hours_to_work / available_days;
     report = format!("{} {} {:.2}{}\n",report,"Need to Work  : ",avg_working_hours_yet," avg hours yet ");
     return report;
 }

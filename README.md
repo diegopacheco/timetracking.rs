@@ -9,21 +9,23 @@ Program Output
 ======================================
 TIME_TRACKING.rs by Diego Pacheco
 --------------------------------------
-Project: work
-Goal   : 200 working hours
+Project  : work
+Goal     : 200 hours
+Days Off : 1 days
 ======================================
  Today Is      :  2/5/2020
- Working Days  :  21
- Worked  Days  :  2
+ Business Days :  21
+ Worked  Days  :  1
  Remain  Days  :  19
+ Worked  Hours :  10
  Need to Work  :  190 hours total <<< 
  Need to Work  :  10.00 avg hours yet 
- AV 10 
+------------------------------------- 
  Hours Predictions 
- 7h   :  147
- 8h   :  168
- 9h   :  189
- 10h  :  210
+ 7h per day    :  147 h
+ 8h per day    :  168 h
+ 9h per day    :  189 h
+ 10h per day   :  210 h
 =====================================
 ```
 

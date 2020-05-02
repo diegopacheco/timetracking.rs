@@ -16,11 +16,15 @@ Goal   : {} working hours
     report = format!("{} {} {}\n",report,"Working Days  : ",time_utils::working_days());
     report = format!("{} {} {}\n",report,"Worked  Days  : ",time_utils::worked_days());
     report = format!("{} {} {}\n",report,"Remain  Days  : ",time_utils::workable_days());
-    report = format!("{} {} {}{}\n",report,"Need to Work  : ",data.config.base - data.month_data.worked_hours," hours total <<< ");
-    report = format!("{} {} {}{}\n",report,"Need to Work  : ",(data.config.base - data.month_data.worked_hours) / workable_days()," avg hours yet ");
 
-    let avg =diff_hours(data.config.base,data.month_data.worked_hours) / (workable_days() - data.month_data.holidays_count);
-    report = format!("{} {} {}",report,"AVG Work/Hours: ",avg);
+    let total_hours = data.config.base as f32 - data.month_data.worked_hours as f32;
+    report = format!("{} {} {}{}\n",report,"Need to Work  : ",total_hours," hours total <<< ");
+
+    let avg_working_hours_yet = (data.config.base as f32 - data.month_data.worked_hours as f32) / workable_days() as f32;
+    report = format!("{} {} {:.2}{}\n",report,"Need to Work  : ",avg_working_hours_yet," avg hours yet ");
+
+    let avg =diff_hours(data.config.base as f32,data.month_data.worked_hours) / (workable_days() - data.month_data.holidays_count) as f32;
+    report = format!("{} {:.2} {}",report,"AVG Work/Hours: ",avg);
     report = format!("{} {}",report,get_avg_hours_predictions());
     report = format!("{}{}",report,"=====================================");
     return String::from(report);
@@ -35,6 +39,6 @@ fn get_avg_hours_predictions() -> String {
     return format!("{}",report);
 }
 
-fn diff_hours(base:i32,worked:i32) -> i32{
+fn diff_hours(base:f32,worked:f32) -> f32{
     return base - worked;
 }

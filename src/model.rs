@@ -4,7 +4,7 @@ pub struct WorkConfig{
 }
 pub struct MonthData{
     pub holidays_count:i32,
-    pub worked_hours:i32,
+    pub worked_hours:f32,
 }
 pub struct TimeTrackingData{
     pub month_data:MonthData,

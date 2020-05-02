@@ -16,6 +16,8 @@ Goal   : {} working hours
     report = format!("{} {} {}\n",report,"Working Days  : ",time_utils::working_days());
     report = format!("{} {} {}\n",report,"Worked  Days  : ",time_utils::worked_days());
     report = format!("{} {} {}\n",report,"Remain  Days  : ",time_utils::workable_days());
+    report = format!("{} {} {}{}\n",report,"Need to Work  : ",data.config.base - data.month_data.worked_hours," hours total <<< ");
+    report = format!("{} {} {}{}\n",report,"Need to Work  : ",(data.config.base - data.month_data.worked_hours) / workable_days()," avg hours yet ");
 
     let avg =diff_hours(data.config.base,data.month_data.worked_hours) / (workable_days() - data.month_data.holidays_count);
     report = format!("{} {} {}",report,"AVG Work/Hours: ",avg);

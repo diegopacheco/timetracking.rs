@@ -5,6 +5,7 @@ How many hours did you worked, how many days you have to work <BR>,
 based on how many houes you worked it let you know how much you need to do in avg. <BR>
 
 Program Output
+
 ```bash
 ======================================
 TIME_TRACKING.rs by Diego Pacheco

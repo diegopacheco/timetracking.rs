@@ -23,7 +23,7 @@ Days Off : {} days
     report = format!("{}{}",report,"-------------------------------------");
     report = format!("{} {}",report,get_avg_hours_predictions());
     report = format!("{}{}",report,"=====================================");
-    return String::from(report);
+    return report;
 }
 
 fn calculate_need_to_work(data:TimeTrackingData) -> String {
@@ -43,5 +43,5 @@ fn get_avg_hours_predictions() -> String {
     report = format!("{} {} {} {}\n", report, "8h per day    : ", business_days()*8, "h");
     report = format!("{} {} {} {}\n", report, "9h per day    : ", business_days()*9, "h");
     report = format!("{} {} {} {}\n", report, "10h per day   : ", business_days()*10, "h");
-    return format!("{}",report);
+    return report;
 }

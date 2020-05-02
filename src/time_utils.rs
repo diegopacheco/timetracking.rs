@@ -14,7 +14,7 @@ pub fn today() -> u32 {
     return Local::now().date().day();
 }
 
-pub fn working_days() -> i64 {
+pub fn business_days() -> i64 {
     let cal = bdays::calendars::WeekendsOnly;
     let year = current_year();
     let month = current_month();
@@ -29,13 +29,25 @@ pub fn working_days() -> i64 {
 }
 
 pub fn workable_days() -> i32 {
-    let today = today() as i32;
-    let working_days = working_days() as i32;
-    return working_days - today as i32;
+    let working_days = business_days() as i32;
+    let worked_days = worked_days() as i32;
+    return working_days - worked_days;
 }
 
 pub fn worked_days() -> u32 {
     let today = today() as u32;
-    let working_days = working_days() as u32;
-    return working_days - (working_days - today);
+    let cal = bdays::calendars::WeekendsOnly;
+    let year = current_year();
+    let month = current_month();
+    let mut days = 0;
+    for i in 1..31 {
+        let date = NaiveDate::from_ymd(year, month, i);
+        if cal.is_bday(date) {
+            days += 1;
+        }
+        if date.day()==today{
+            break;
+        }
+    }
+    return days;
 }

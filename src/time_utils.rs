@@ -18,7 +18,7 @@ pub fn business_days() -> i64 {
     let cal = bdays::calendars::WeekendsOnly;
     let year = current_year();
     let month = current_month();
-    let mut days = 0;
+    let mut days = 1;
     for i in 1..31 {
         let date = NaiveDate::from_ymd(year, month, i);
         if cal.is_bday(date) {
